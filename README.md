@@ -14,7 +14,7 @@
 ### <img width="1128" alt="2022-07-21 (9)" src="https://user-images.githubusercontent.com/104933717/180347262-85097fe1-ee8c-4e11-a129-a1a767b810f7.png">
 ### <img width="1128" alt="2022-07-21 (8)" src="https://user-images.githubusercontent.com/104933717/180347304-c99b9ccd-fcdf-46a1-bce9-c9416bb2c184.png">
 ## Video Link
-### https://drive.google.com/file/d/1967ma8lPsbKlQQUEOW0KmtO57PYLPNYT/view
+### https://drive.google.com/file/d/128mqezkX7ZUk6ZE5r6BPENQv7RZQrSev/view
 ## Status 
 ### HTML generator is functioning properly with user input being collected and generating a new HTML file with all the correct information. Unfortunetly, tests are not working properly and show as failed which can be worked on in future review.    
 ## Credits/Sources 
