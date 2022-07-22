@@ -1,44 +1,34 @@
-// create the team
 const inquirer = require("inquirer");
 const fs = require("fs");
 const Manager = require("./lib/Manager")
 const Engineer = require("./lib/Engineer")
 const Intern = require("./lib/Intern")
-// const { ADDRGETNETWORKPARAMS } = require('dns');
 const employees = [];
-// build team function asks for manager/office number
-// call function for more team members /add team member
-//push the employee data into employee array
-//if-else statements
-//two functions for create engineer and create intern
-//call function for more team members /add team member
-//push the employee data into employee array
-//once finished/say no to the above function, call  generate html function
 
 function startManager() {
-  inquirer.prompt([
+inquirer.prompt([
     {
-      type: "input",
-      name: "getName",
-      message: "What is your name?",
+    type: "input",
+    name: "getName",
+    message: "What is your name?",
     },
     {
-      type: "input",
-      name: "getId",
-      message: "What is your Id?",
+    type: "input",
+    name: "getId",
+    message: "What is your Id?",
     },
     {
-      type: "input",
-      name: "getEmail",
-      message: "What is your email?",
+    type: "input",
+    name: "getEmail",
+    message: "What is your email?",
     },
     {
-      type: "input",
-      name: "getOfficeNumber",
-      message: "What is your office number?",
+    type: "input",
+    name: "getOfficeNumber",
+    message: "What is your office number?",
     },
-  ])
-  .then((answers) => {
+])
+.then((answers) => {
     console.log(answers)
     const newManager = new Manager(
         answers.getName,
@@ -47,57 +37,57 @@ function startManager() {
         answers.getOfficeNumber
     )
     employees.push(newManager)
-      addTeam();
-  })
+    addTeam();
+})
 }
 
 startManager()
 
 function addTeam() {
-  inquirer.prompt([
+inquirer.prompt([
     {
-      type: "list",
-      name: "add",
-      message:
+    type: "list",
+    name: "add",
+    message:
         "Would you like to add an engineer, intern, or finish building your team?",
-      choices: ["Engineer", "Intern", "Finish building my team"],
+    choices: ["Engineer", "Intern", "Finish building my team"],
     },
-  ])
-  .then((answers) => {
-      if (answers.add == "Engineer") {
+])
+.then((answers) => {
+    if (answers.add == "Engineer") {
         return addEngineer();
-      } else if (answers.add == "Intern") {
+    } else if (answers.add == "Intern") {
         return addIntern();
-      } else if (answers.add == "Finish building my team") {
+    } else if (answers.add == "Finish building my team") {
         return generateHTML();
-      }
+    }
 
-  })
+})
 
 }
 function addEngineer() {
-  inquirer.prompt([
+inquirer.prompt([
     {
-      type: "input",
-      name: "getName",
-      message: "What is your name?",
+    type: "input",
+    name: "getName",
+    message: "What is your name?",
     },
     {
-      type: "input",
-      name: "getId",
-      message: "What is your Id?",
+    type: "input",
+    name: "getId",
+    message: "What is your Id?",
     },
     {
-      type: "input",
-      name: "getEmail",
-      message: "What is your email?",
+    type: "input",
+    name: "getEmail",
+    message: "What is your email?",
     },
     {
-      type: "input",
-      name: "getGithub",
-      message: "What is yor GitHub username?",
+    type: "input",
+    name: "getGithub",
+    message: "What is yor GitHub username?",
     },
-  ])
+])
 .then((answers) => {
     console.log(answers)
     const newEngineer = new Engineer(
@@ -107,21 +97,21 @@ function addEngineer() {
         answers.getGithub
     )
     employees.push(newEngineer)
-  addTeam();
+addTeam();
 }
-  )}
+)}
 
 function addIntern() {
-  inquirer.prompt([
+inquirer.prompt([
     {
-      type: "input",
-      name: "getName",
-      message: "What is your name?",
+    type: "input",
+    name: "getName",
+    message: "What is your name?",
     },
     {
-      type: "input",
-      name: "getId",
-      message: "What is your Id?",
+    type: "input",
+    name: "getId",
+    message: "What is your Id?",
     },
     {
         type: "input",
@@ -129,12 +119,12 @@ function addIntern() {
         message: "What is your email?",
     },
     {
-      type: "input",
-      name: "getSchool",
-      message: "What is your school name?",
+    type: "input",
+    name: "getSchool",
+    message: "What is your school name?",
     },
-  ])
-  .then((answers) => {
+])
+.then((answers) => {
     console.log(answers)
 
     const newIntern = new Intern(
@@ -144,17 +134,17 @@ function addIntern() {
         answers.getSchool
     )
     employees.push(newIntern)
-  addTeam();
+addTeam();
 }
-  )}
-  function generateHTML() {
+)}
+function generateHTML() {
     console.log(employees)
     writeHtml(employees)
-  }
+}
 
 const generateTeam = (team) => {
   // create the manager html
-  const generateManager = (manager) => {
+const generateManager = (manager) => {
     return `
         <div class="card employee-card">
         <div class="card-header">
@@ -170,10 +160,10 @@ const generateTeam = (team) => {
         </div>
     </div>
         `;
-  };
+};
 
   // create the html for engineers
-  const generateEngineer = (engineer) => {
+const generateEngineer = (engineer) => {
     return `
         <div class="card employee-card">
     <div class="card-header">
@@ -189,10 +179,10 @@ const generateTeam = (team) => {
     </div>
 </div>
         `;
-  };
+};
 
   // create the html for interns
-  const generateIntern = (intern) => {
+const generateIntern = (intern) => {
     return `
         <div class="card employee-card">
     <div class="card-header">
@@ -208,34 +198,34 @@ const generateTeam = (team) => {
     </div>
 </div>
         `;
-  };
+};
 
-  const html = [];
+const html = [];
 
-  html.push(
+html.push(
     team
-      .filter((employee) => employee.getRole() === "Manager")
-      .map((manager) => generateManager(manager))
-  );
-  html.push(
+    .filter((employee) => employee.getRole() === "Manager")
+    .map((manager) => generateManager(manager))
+);
+html.push(
     team
-      .filter((employee) => employee.getRole() === "Engineer")
-      .map((engineer) => generateEngineer(engineer))
-      .join("")
-  );
-  html.push(
+    .filter((employee) => employee.getRole() === "Engineer")
+    .map((engineer) => generateEngineer(engineer))
+    .join("")
+);
+html.push(
     team
-      .filter((employee) => employee.getRole() === "Intern")
-      .map((intern) => generateIntern(intern))
-      .join("")
-  );
+    .filter((employee) => employee.getRole() === "Intern")
+    .map((intern) => generateIntern(intern))
+    .join("")
+);
 
-  return html.join("");
+return html.join("");
 };
 
 // export function to generate entire page
 function writeHtml(team) {
-  const Html = `
+const Html = `
     <!DOCTYPE html>
 <html lang="en">
 
